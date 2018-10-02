@@ -17,6 +17,7 @@ metadata {
 		attribute "errorMode", "string"
 
 		fingerprint mfr: "010F", prod: "0102", model: "2000"
+		fingerprint mfr: "010F", prod: "0102", model: "1000"
 	}
 
 	tiles (scale: 2) {
@@ -147,11 +148,11 @@ def configure(){
 def updated() {
 	if ( state.lastUpdated && (now() - state.lastUpdated) < 500 ) return
 	logging("${device.displayName} - Executing updated()","info")
-	runIn(3,"syncStart")
+	runIn(3, "syncStart")
 	state.lastUpdated = now()
 }
 
-private syncStart() {
+def syncStart() {
 	boolean syncNeeded = false
 	parameterMap().each {
 		if(settings."$it.key" != null) {
