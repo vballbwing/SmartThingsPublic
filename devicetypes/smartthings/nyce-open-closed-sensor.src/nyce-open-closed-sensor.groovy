@@ -18,7 +18,7 @@ import physicalgraph.zigbee.clusters.iaszone.ZoneStatus
 
 
 metadata {
-	definition (name: "NYCE Open/Closed Sensor", namespace: "smartthings", author: "NYCE") {
+	definition (name: "NYCE Open/Closed Sensor", namespace: "smartthings", author: "NYCE", mnmn: "SmartThings", vid: "generic-contact-3") {
 		capability "Battery"
 		capability "Configuration"
 		capability "Contact Sensor"
@@ -196,7 +196,7 @@ private int getBatteryPercentage(int value) {
 	{
 		pct = 0.06
 	}
-	return (int) pct * 100
+	return (int)(pct * 100)
 }
 
 private boolean shouldProcessMessage(cluster) {
